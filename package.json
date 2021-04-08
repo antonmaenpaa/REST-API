@@ -20,6 +20,7 @@
   "homepage": "https://github.com/antonmaenpaa/REST-API#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2"
   }
 }
