@@ -1,3 +1,4 @@
+
 GET http://localhost:5000/
 
 ###
@@ -12,22 +13,24 @@ Content-Type: application/json
 
 {
     "firstName": "Anton",
-    "lastName": "Wikar",
-    "age": 26
+    "lastName": "Mäenpää",
+    "age": 29
 }
 ###
 
-GET http://localhost:5000/users/544750
+GET http://localhost:5000/users/82538
 
 ###
 
-DELETE http://localhost:5000/users/419604
+DELETE http://localhost:5000/users/75587
 
 ###
 
-PUT http://localhost:5000/users/170063
+PUT http://localhost:5000/users/287102
 Content-Type: application/json
 
 {
-    "age": 12
+    "firstName": "Anton",
+    "lastName": "Mäenpää",
+    "age": 29
 }
