@@ -13,8 +13,6 @@ app.use(express.static('./public'));
 
 app.use(express.json())
 
-// let users = []
-
 // Show all users
 app.get('/users', (req, res) => {
 
@@ -36,8 +34,12 @@ app.post('/users', (req, res) => {
         const users = JSON.parse(data.toString())
         const user = req.body;
     
-        users.push( {...user, id: randomId() })
-    
+        if(user.firstName === "" || user.lastName === "" || user.age === "") {
+            res.status(400).json('Cant submit with empty fields')
+        } else {
+
+            users.push( {...user, id: randomId() })
+        }
     
         fs.writeFile('users.json', JSON.stringify(users, null, 2), () => {
     
@@ -61,6 +63,7 @@ app.get('/users/:id', (req, res) => {
     
         if (!foundUser) {
             res.status(404).json(`Could not find user with the id of ${id}`)
+            return;
         }
         res.status(200).json(foundUser)
     })
