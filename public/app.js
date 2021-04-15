@@ -24,20 +24,18 @@ async function main() {
 
 // SEARCHBAR
 async function searchBar(e) {
-    if(e.key = "Enter") {
+    if(e.key = "enter") {
         const searchString = e.target.value
-        if(searchString === "") {
-            alert('Input field is empty ....');
-            return;
-        }
         let userArray = [];
         let specific = await getSpecific(searchString)
+
+        userArray.push(specific);
+        showUsers(userArray);
+        // console.log(userArray)
         
-        userArray.push(specific)
-        
-        showUsers(userArray)
-        console.log(userArray)
-        
+        if(searchString.length === "") {
+            console.log('Input field is empty ....')
+        }
 
     }
 }
