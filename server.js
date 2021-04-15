@@ -6,7 +6,7 @@ const fs = require('fs')
 
 // Generates random id for user
 function randomId() {
-    return Math.floor(Math.random() * 1000000)
+    return Math.floor(Math.random() * 10000)
 }
 
 app.use(express.static('./public'));

@@ -24,19 +24,22 @@ async function main() {
 
 // SEARCHBAR
 async function searchBar(e) {
-    if(e.key = "enter") {
-        const searchString = e.target.value
-        let userArray = [];
+    // e.preventDefault();
+    let userArray = [];
+    const searchString = e.target.value
+    if(e.keyCode === 13) {
         let specific = await getSpecific(searchString)
-
+        
+        if(searchString != specific.id) {
+            alert(`cant find user with the id of ${searchString}`);
+            // showUsers(users);
+            location.reload();
+            return;
+        }
         userArray.push(specific);
         showUsers(userArray);
-        // console.log(userArray)
         
-        if(searchString.length === "") {
-            console.log('Input field is empty ....')
-        }
-
+        return;
     }
 }
 

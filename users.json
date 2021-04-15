@@ -3,12 +3,18 @@
     "firstName": "Anton",
     "lastName": "Mäenpää",
     "age": "29",
-    "id": 362482
+    "id": 2876
   },
   {
     "firstName": "Frida",
     "lastName": "Wikar",
     "age": "26",
-    "id": 185514
+    "id": 8995
+  },
+  {
+    "firstName": "Lovis",
+    "lastName": "Bredbacka",
+    "age": "6",
+    "id": 1583
   }
 ]
