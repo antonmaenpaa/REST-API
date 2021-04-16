@@ -33,9 +33,9 @@ form {
     height: 100px;
     /* background-color: aquamarine; */
     border-radius: 3px;
-    -webkit-box-shadow: -4px -4px 6px 2px rgba(0,0,0,0.37);
-    -moz-box-shadow: -4px -4px 6px 2px rgba(0,0,0,0.37);
-    box-shadow: -4px -4px 6px 2px rgba(0,0,0,0.37);
+    -webkit-box-shadow: -4px -4px 6px 1px rgba(0,0,0,0.37);
+    -moz-box-shadow: -4px -4px 6px 1px rgba(0,0,0,0.37);
+    box-shadow: -4px -4px 6px 1px rgba(0,0,0,0.37);
 }
 
 .main-div {
@@ -51,4 +51,46 @@ form {
 .flex {
     display: flex;
 }
+
+input {
+    padding: .2rem;
+    border-radius: 2px;
+    border: .5px solid black;
+}
+
+input:hover {
+    background-color: lightgrey;
+}
+
+#update {
+    cursor: pointer;
+}
+
+#delete-btn {
+    background-color: red;
+    border: 0px;
+    border-radius: 2px;
+    padding: .2rem;
+    color: white;
+    margin: .2rem;
+}
+#edit-btn {
+    background-color: orange;
+    border: 0px;
+    border-radius: 2px;
+    padding: .2rem;
+    color: white;
+    margin: .2rem;
+}
+
+#btn {
+    background-color: green;
+    border: 0px;
+    border-radius: 2px;
+    padding: .2rem;
+    color: white;
+    margin: .2rem;
+}
+
+
 

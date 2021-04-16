@@ -6,25 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script defer src="./app.js"></script>
 </head>
 <body>
     <h1>REST-API WITH USERS</h1>
 
     <!-- SEARCHBAR -->
-    <input type="text" name="searchBar" id="searchBar" placeholder="Search on id and hit enter...">
-
+    <div class="flex">
+        <input type="text" name="searchBar" id="searchBar" placeholder="Search on id and hit enter...">
+        <span class="material-icons" id="update">
+            refresh
+            </span>
+    </div>
+  
+    
     <!-- FORM INPUTS -->
     <form action="/users" method="post" autocomplete="off" class="submit-form">
-        <label for="firstName">First Name</label>
+        <label for="firstName">First Name:</label>
         <input required type="text" name="firstName" id="firstName" autocomplete="off">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Last Name:</label>
         <input required type="text" name="lastName" id="lastName"  autocomplete="off">
-        <label for="age">Age</label>
+        <label for="age">Age:</label>
         <input required type="text" name="age" id="age" autocomplete="off">
-
+        
         <button type="submit" value="Create new user" id="btn">Save</button>
-      
     
     </form>
 

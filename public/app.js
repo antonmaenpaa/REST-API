@@ -1,8 +1,9 @@
 window.addEventListener('load', main);
 
+async function main() {   
+    const refreshPage = document.getElementById('update');
+    refreshPage.addEventListener('click', refreshWindow);
 
-async function main() {
-    
     const form = document.querySelector('form');
     form.addEventListener('submit', handleSubmit);
     
@@ -13,18 +14,16 @@ async function main() {
     search.addEventListener('keypress', searchBar);
     
     let users = await getAllUsers();
-    showUsers(users);
+    showUsers(users);  
+}
 
-    // let users = [];
-
-    
-    
-    
+function refreshWindow() {
+    location.reload();
 }
 
 // SEARCHBAR
 async function searchBar(e) {
-    // e.preventDefault();
+    let users = await getAllUsers();
     let userArray = [];
     const searchString = e.target.value
     if(e.keyCode === 13) {
@@ -32,10 +31,10 @@ async function searchBar(e) {
         
         if(searchString != specific.id) {
             alert(`cant find user with the id of ${searchString}`);
-            // showUsers(users);
-            location.reload();
+            showUsers(users);
             return;
         }
+
         userArray.push(specific);
         showUsers(userArray);
         
@@ -43,15 +42,13 @@ async function searchBar(e) {
     }
 }
 
-// SHOW ALL USERS
+// SHOW USERS/USER
 function showUsers(users) {
-
     const container = document.getElementById('container');
     container.innerHTML = "";
     users.map((user, i) => {
         const div = document.createElement('div');
-        div.className = "card"
-        
+        div.className = "card"     
         div.innerHTML =        
         `<span class="main-div data-id=${user.id}">
             <span>
@@ -83,7 +80,6 @@ function showUsers(users) {
             <span data-id=${user.id}>
                 <button id="delete-btn">Delete</button>
                 <button id="edit-btn">Edit</button>
-
             </span>
         </span>`;
  
@@ -91,7 +87,7 @@ function showUsers(users) {
     })
 }
 
-
+// ADD USER
 async function handleSubmit(event) {
     event.preventDefault();
     
@@ -99,24 +95,23 @@ async function handleSubmit(event) {
     let lastNameValue = document.getElementById('lastName').value;
     let ageValue = document.getElementById('age').value;
     
-    const addedUser = await createUser(firstNameValue, lastNameValue, ageValue)
+    const addedUser = await createUser(firstNameValue, lastNameValue, ageValue);
     
     if(addedUser) {
-        alert(`User with name of ${firstNameValue} added to database`);
         location.reload();
+        alert(`User with name of ${firstNameValue} added to database`);
         return;
     }
     
 }
 
+// DELETE USER
 async function handleDelete(e) {
     e.preventDefault();
 
-    
     const deleteBtn = e.target.id == 'delete-btn';
     const editBtn = e.target.id == 'edit-btn';
 
-    
     let userId = e.target.parentElement.dataset.id;
     if(deleteBtn) {
         let deletedUser = await deleteUser(userId);
@@ -125,16 +120,12 @@ async function handleDelete(e) {
             location.reload();
             return;
         }
-
     }
 
     if (editBtn) {
-        
-        // console.log('edit');
         const child = e.target.parentElement;
         const parent = child.parentElement;
      
-
         const firstNameValue = document.getElementById('firstName');
         const lastNameValue = document.getElementById('lastName');
         const ageValue = document.getElementById('age');
@@ -142,7 +133,6 @@ async function handleDelete(e) {
         let firstNameContent = parent.querySelector('.firstName').textContent;
         let lastNameContent = parent.querySelector('.lastName').textContent;
         let ageContent = parent.querySelector('.age').textContent;
-
 
         firstNameValue.value = firstNameContent;
         lastNameValue.value = lastNameContent;
@@ -157,7 +147,6 @@ async function handleDelete(e) {
         })
     }
 }
-
 
 async function getAllUsers() {
     const allUsers = await makeRequest("/users", "GET");
@@ -193,21 +182,15 @@ async function getSpecific(id) {
     return status;
 }
 
-
-async function makeRequest(url, method, body) {
-    
+async function makeRequest(url, method, body) { 
     const response = await fetch(url, {
         method: method,
         body: JSON.stringify(body),
         headers: {
             "Content-Type": "application/json"
         }
-})
-   
-
-    const result = await response.json()
-
-
-    return result
+});
+    const result = await response.json();
+    return result;
 }
 
