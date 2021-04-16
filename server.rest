@@ -18,15 +18,15 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:5000/users/90293
+GET http://localhost:5000/users/2876
 
 ###
 
-DELETE http://localhost:5000/users/386134
+DELETE http://localhost:5000/users/2876
 
 ###
 
-PUT http://localhost:5000/users/928542
+PUT http://localhost:5000/users/2876
 Content-Type: application/json
 
 {
